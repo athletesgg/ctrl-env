@@ -1,0 +1,33 @@
+{
+  "name": "ctrl-env",
+  "version": "1.0.0",
+  "description": "An alternative way to assert environment variables.",
+  "main": "ctrl-env.js",
+  "scripts": {
+    "lint": "./scripts/lint",
+    "test": "./scripts/test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/martin-experiments/ctrl-env.git"
+  },
+  "keywords": [
+    "env",
+    "environment",
+    "variables",
+    "assert"
+  ],
+  "author": "Martin Experiments LLC",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/martin-experiments/ctrl-env/issues"
+  },
+  "homepage": "https://github.com/martin-experiments/ctrl-env#readme",
+  "devDependencies": {
+    "eslint": "^3.0.1",
+    "tap": "^6.1.1"
+  },
+  "dependencies": {
+    "lodash.get": "^4.3.0"
+  }
+}
