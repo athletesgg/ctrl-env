@@ -31,7 +31,7 @@ ctrlEnv.assert()
 http.on('/feed', (request, response) => {
   Twitter.getFeed({
     handle: '_experiments'
-  , secret: ctrlEnv.SECRET
+  , secret: ctrlEnv.get('SECRET')
   }, (error, feed) => {
     if (error) {
       throw error
@@ -90,6 +90,11 @@ new CtrlEnv(..., {prefix: 'TEST', separator: '___'})
 
 This method actually reads the environment variables and asserts that they exist
 or have the required values. Note: This method is synchronous.
+
+#### ctrlEnv.get(*String* key)
+
+This method returns the value of the environment variable key. The prefix should
+not be included in the `key` string.
 
 ## License
 
