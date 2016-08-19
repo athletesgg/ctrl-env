@@ -1,7 +1,6 @@
 {
   "extends": [
     "ctrl"
-  , "eslint:recommended"
   ]
 , "rules": {
     "no-console": ["error", {"allow": ["warn"]}]
