@@ -1,6 +1,8 @@
 # ctrl-env
 
 [![Build Status](https://travis-ci.org/martin-experiments/ctrl-env.svg?branch=master)](https://travis-ci.org/martin-experiments/ctrl-env)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/7986492604f542938f19f4907a4e7f0c)](https://www.codacy.com/app/suitupalex/ctrl-env?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=martin-experiments/ctrl-env&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://api.codacy.com/project/badge/Coverage/7986492604f542938f19f4907a4e7f0c)](https://www.codacy.com/app/suitupalex/ctrl-env?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=martin-experiments/ctrl-env&amp;utm_campaign=Badge_Coverage)
 
 An alternative way to assert environment variables.
 

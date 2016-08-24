@@ -1,10 +1,11 @@
 {
   "name": "ctrl-env",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "An alternative way to assert environment variables.",
   "main": "ctrl-env.js",
   "scripts": {
     "lint": "./scripts/lint",
+    "posttest": "./scripts/posttest",
     "test": "./scripts/test"
   },
   "repository": {
@@ -24,6 +25,7 @@
   },
   "homepage": "https://github.com/martin-experiments/ctrl-env#readme",
   "devDependencies": {
+    "codacy-coverage": "^2.0.0",
     "eslint": "^3.3.1",
     "eslint-config-ctrl": "^2.0.0",
     "tap": "^6.3.2"
