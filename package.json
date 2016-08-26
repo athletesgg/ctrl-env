@@ -1,6 +1,6 @@
 {
   "name": "ctrl-env",
-  "version": "1.0.5",
+  "version": "2.0.0",
   "description": "An alternative way to assert environment variables.",
   "main": "ctrl-env.js",
   "scripts": {

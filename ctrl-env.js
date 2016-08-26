@@ -12,16 +12,11 @@ const raise = {
   }
 }
 
-const vars = Symbol('vars')
-
 class CtrlEnv {
   constructor(variables, options) {
     this.variables = variables
     this.prefix = options ? options.prefix : ''
     this.separator = options ? options.separator || '_' : '_'
-
-    // Private Variables
-    this[vars] = {}
   }
 
   check(envVar) {
@@ -44,7 +39,9 @@ class CtrlEnv {
       return [raise.error, raise.error.INVALID, value]
     }
 
-    this[vars][key] = value
+    Object.defineProperty(this, key, {
+      get: () => {return value}
+    })
 
     return false
   }
@@ -80,10 +77,6 @@ class CtrlEnv {
     }
 
     return assertions
-  }
-
-  get(key) {
-    return this[vars][key]
   }
 }
 
