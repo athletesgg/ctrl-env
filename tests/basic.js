@@ -49,6 +49,22 @@ tap.test('should throw invalid optional var', (t) => {
   t.end()
 })
 
+tap.test('should throw overwrite getter', (t) => {
+  const ctrlEnv = new CtrlEnv([
+    ['REQUIRED_VAR']
+  ])
+
+  const assertions = ctrlEnv.assert()
+  t.equals(assertions.warnings.length, 0)
+  t.equals(assertions.errors.length, 0)
+
+  t.throws(() => {
+    ctrlEnv.REQUIRED_VAR = 'blah'
+  })
+
+  t.end()
+})
+
 // Negatives
 tap.test('should pass required var', (t) => {
   const ctrlEnv = new CtrlEnv([
@@ -94,6 +110,20 @@ tap.test('should pass valid optional var', (t) => {
   const assertions = ctrlEnv.assert()
   t.equals(assertions.warnings.length, 0)
   t.equals(assertions.errors.length, 0)
+
+  t.end()
+})
+
+tap.test('should get required var', (t) => {
+  const ctrlEnv = new CtrlEnv([
+    ['REQUIRED_VAR']
+  ])
+
+  const assertions = ctrlEnv.assert()
+  t.equals(assertions.warnings.length, 0)
+  t.equals(assertions.errors.length, 0)
+
+  t.equals(ctrlEnv.REQUIRED_VAR, 'taylor swift')
 
   t.end()
 })
