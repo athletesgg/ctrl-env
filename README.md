@@ -72,6 +72,9 @@ const exampleEnvVars = [
 
   // Variable is optional and can only be yes or no:
 , ['OPTIONAL_LIMITED_VARIABLE', {required: false, values: ['yes', 'no']}]
+
+  // Variable is required but is not prefixed:
+, ['NODE_ENV', {prefixed: false}]
 ]
 
 const ctrlEnv = new CtrlEnv(exampleEnvVars)
