@@ -2,5 +2,11 @@ language: node_js
 node_js:
   - "node"
   - "6"
+before_install:
+  - npm install -g yarn
+install:
+  - yarn
+script:
+  - yarn test
 notifications:
   slack: martinexperiments:ZW8ym2bVqDmXSh8VZlWntiMt

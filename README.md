@@ -8,6 +8,14 @@ An alternative way to assert environment variables.
 
 ## Installation
 
+[Yarn](https://yarnpkg.com) is recommended for installation.
+
+```bash
+$ yarn add ctrl-env
+```
+
+But you can still use npm:
+
 ```bash
 $ npm install --save ctrl-env
 ```
