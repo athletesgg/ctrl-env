@@ -12,6 +12,13 @@ REQUIRED_VAR="taylor swift" \
 OPTIONAL_VAR=1989 \
 VALID_REQUIRED_VAR="sparks fly" \
 VALID_OPTIONAL_VAR=enchanted \
+PREFIXED_INVALID_REQUIRED_VAR="red b-side" \
+PREFIXED_INVALID_OPTIONAL_VAR="style b-side" \
+PREFIXED_REQUIRED_VAR="taylor swift b-side" \
+PREFIXED_OPTIONAL_VAR="1989 b-side" \
+PREFIXED_VALID_REQUIRED_VAR="sparks fly b-side" \
+PREFIXED_VALID_OPTIONAL_VAR="enchanted b-side" \
+PREFIXLESS_REQUIRED_VAR="fearless" \
   tap tests/**/*.js -Rspec --coverage
 tapResult=$?
 
