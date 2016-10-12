@@ -87,6 +87,8 @@ tap.test('should pass optional var', (t) => {
   t.equals(assertions.warnings.length, 0)
   t.equals(assertions.errors.length, 0)
 
+  t.equals(ctrlEnv.OPTIONAL_VAR, '1989')
+
   t.end()
 })
 
@@ -99,6 +101,8 @@ tap.test('should pass valid required var', (t) => {
   t.equals(assertions.warnings.length, 0)
   t.equals(assertions.errors.length, 0)
 
+  t.equals(ctrlEnv.VALID_REQUIRED_VAR, 'sparks fly')
+
   t.end()
 })
 
@@ -110,6 +114,8 @@ tap.test('should pass valid optional var', (t) => {
   const assertions = ctrlEnv.assert()
   t.equals(assertions.warnings.length, 0)
   t.equals(assertions.errors.length, 0)
+
+  t.equals(ctrlEnv.VALID_OPTIONAL_VAR, 'enchanted')
 
   t.end()
 })
@@ -124,6 +130,28 @@ tap.test('should get required var', (t) => {
   t.equals(assertions.errors.length, 0)
 
   t.equals(ctrlEnv.REQUIRED_VAR, 'taylor swift')
+
+  t.end()
+})
+
+tap.test('should get all vars', (t) => {
+  const ctrlEnv = new CtrlEnv([
+    ['REQUIRED_VAR']
+  , ['OPTIONAL_VAR', {required: false}]
+  , ['VALID_REQUIRED_VAR', {values: ['sparks fly']}]
+  , ['VALID_OPTIONAL_VAR', {values: ['enchanted']}]
+  ])
+
+  const assertions = ctrlEnv.assert()
+  t.equals(assertions.warnings.length, 0)
+  t.equals(assertions.errors.length, 0)
+
+  t.deepEquals(ctrlEnv.all, {
+    REQUIRED_VAR: 'taylor swift'
+  , OPTIONAL_VAR: '1989'
+  , VALID_REQUIRED_VAR: 'sparks fly'
+  , VALID_OPTIONAL_VAR: 'enchanted'
+  })
 
   t.end()
 })

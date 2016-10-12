@@ -100,6 +100,12 @@ prefix as a property of your `CtrlEnv` instance. This property is a proper
 ES2015 getter that does not have a setter. It cannot be overwritten without
 using `Object.defineProperty`.
 
+#### *get* ctrlEnv.all
+
+This returns an object with all asserted environment variables. This property is
+a propert ES2015 getter that does not have a setter. It cannot be overwritten
+without `Object.defineProperty`.
+
 > Note: This deprecates #get() from v1.
 
 ## License

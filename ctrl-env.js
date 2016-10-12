@@ -2,9 +2,14 @@
 
 class CtrlEnv {
   constructor(variables, options) {
+    this._keys = []
     this.variables = variables
     this.prefix = options ? options.prefix : ''
     this.separator = options ? options.separator || '_' : '_'
+  }
+
+  get all() {
+    return require('./lib/getters/all').call(this)
   }
 
   get raise() {
