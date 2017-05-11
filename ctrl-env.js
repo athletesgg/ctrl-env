@@ -12,7 +12,7 @@ class CtrlEnv {
     return require('./lib/getters/all').call(this)
   }
 
-  get raise() {
+  static get raise() {
     return require('./lib/getters/raise')
   }
 }

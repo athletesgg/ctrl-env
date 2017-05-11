@@ -149,10 +149,10 @@ tap.test('should get all vars', (t) => {
   t.equals(assertions.errors.length, 0)
 
   t.deepEquals(ctrlEnv.all, {
-    REQUIRED_VAR: 'taylor swift'
-  , OPTIONAL_VAR: '1989'
-  , VALID_REQUIRED_VAR: 'sparks fly'
+    OPTIONAL_VAR: '1989'
+  , REQUIRED_VAR: 'taylor swift'
   , VALID_OPTIONAL_VAR: 'enchanted'
+  , VALID_REQUIRED_VAR: 'sparks fly'
   })
 
   t.end()
