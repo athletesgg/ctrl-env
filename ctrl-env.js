@@ -1,11 +1,14 @@
 'use strict'
 
 class CtrlEnv {
-  constructor(variables, options) {
+  constructor(variables, options = {}) {
     this._keys = []
+
+    const {prefix = '', separator = '_'} = options
+
     this.variables = variables
-    this.prefix = options ? options.prefix : ''
-    this.separator = options ? options.separator || '_' : '_'
+    this.prefix = prefix
+    this.separator = separator
   }
 
   get all() {

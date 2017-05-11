@@ -3,7 +3,9 @@
   "version": "2.1.0",
   "description": "An alternative way to assert environment variables.",
   "main": "ctrl-env.js",
-  "engines": {"node": ">=6.0.0"},
+  "engines": {
+    "node": ">=6.0.0"
+  },
   "scripts": {
     "lint": "./scripts/lint",
     "posttest": "./scripts/posttest",
@@ -30,8 +32,5 @@
     "eslint": "^3.19.0",
     "eslint-config-ctrl": "^3.2.0",
     "tap": "^10.3.2"
-  },
-  "dependencies": {
-    "lodash.get": "^4.3.0"
   }
 }
