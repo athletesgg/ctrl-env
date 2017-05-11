@@ -121,6 +121,6 @@ without `Object.defineProperty`.
 
 ## License
 
-Copyright (c) 2016 Martin Experiments LLC
+Copyright (c) 2017 Martin Experiments LLC
 
 MIT (https://www.opensource.org/licenses/MIT)
