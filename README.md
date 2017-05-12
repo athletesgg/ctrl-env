@@ -78,6 +78,9 @@ const exampleEnvVars = [
   // Variable is required and can only be yes or no:
 , ['LIMITED_VARIABLE', {values: ['yes', 'no']}]
 
+  // Variable is required and can only be an integer:
+, ['TYPED_VARIABLE', {type: 'integer'}]
+
   // Variable is optional and can only be yes or no:
 , ['OPTIONAL_LIMITED_VARIABLE', {required: false, values: ['yes', 'no']}]
 
