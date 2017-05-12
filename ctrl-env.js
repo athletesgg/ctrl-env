@@ -34,20 +34,45 @@ class CtrlEnv {
 
   check(envVar) {
     const raise = CtrlEnv.raise
+    let warning = false
 
     const [key, options = {}] = envVar
-    const {required = true, prefixed = true, values} = options
+    const {required = true, prefixed = true, values, type} = options
 
     const prefix = prefixed
       ? `${this.prefix}${this.prefix ? this.separator : ''}`
       : ''
     const fullKey = `${prefix}${key}`
-    const value = process.env[fullKey]
+    let value = process.env[fullKey]
 
     if (!value) {
       return required
         ? [raise.error, raise.error.MISSING]
         : [raise.warning, raise.warning.MISSING]
+    }
+
+    switch (type) {
+      case undefined:
+      case 'string':
+      break
+      case 'integer': {
+        const parsed = Number.parseInt(value)
+
+        if (parsed.toString() !== value) {
+          return [raise.error, raise.error.INVALID, value]
+        }
+
+        value = parsed
+      } break
+      case 'float':
+      case 'number':
+        value = Number.parseFloat(value)
+
+        if (Number.isNaN(value)) {
+          return [raise.error, raise.error.INVALID, value]
+        }
+      break
+      default: warning = [raise.warning, raise.warning.UNSUPPORTED_TYPE, type]
     }
 
     if (Array.isArray(values) && !values.includes(value)) {
@@ -60,7 +85,7 @@ class CtrlEnv {
       get: () => value
     })
 
-    return false
+    return warning
   }
 
   assert() {
@@ -97,6 +122,7 @@ CtrlEnv.raise = {
   }
 , warning: {
     MISSING: 'Missing optional key'
+  , UNSUPPORTED_TYPE: 'Unsupported type check'
   }
 }
 
