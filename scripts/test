@@ -19,7 +19,7 @@ PREFIXED_OPTIONAL_VAR="1989 b-side" \
 PREFIXED_VALID_REQUIRED_VAR="sparks fly b-side" \
 PREFIXED_VALID_OPTIONAL_VAR="enchanted b-side" \
 PREFIXLESS_REQUIRED_VAR="fearless" \
-  tap tests/**/*.js -Rspec --coverage
+  tap tests/**/*.js --coverage
 tapResult=$?
 
 echo "Finished tests."
