@@ -28,9 +28,9 @@
   },
   "homepage": "https://github.com/martin-experiments/ctrl-env#readme",
   "devDependencies": {
-    "codacy-coverage": "^2.0.2",
-    "eslint": "^3.19.0",
-    "eslint-config-ctrl": "^3.2.0",
-    "tap": "^10.3.2"
+    "codacy-coverage": "^3.0.0",
+    "eslint": "^4.19.1",
+    "eslint-config-ctrl": "^5.0.0",
+    "tap": "^11.1.5"
   }
 }

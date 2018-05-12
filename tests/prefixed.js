@@ -16,9 +16,9 @@ function assertClean(t, assertions) {
 // Positives
 tap.test('should throw missing required var', (t) => {
   const ctrlEnv = new CtrlEnv([
-    ['MISSING_REQUIRED_VAR']
+    ['MISSING_REQUIRED_VAR'],
   ], {
-    prefix: 'PREFIXED'
+    prefix: 'PREFIXED',
   })
 
   t.throws(ctrlEnv.assert)
@@ -28,9 +28,9 @@ tap.test('should throw missing required var', (t) => {
 
 tap.test('should warn missing optional var', (t) => {
   const ctrlEnv = new CtrlEnv([
-    ['MISSING_OPTIONAL_VAR', {required: false}]
+    ['MISSING_OPTIONAL_VAR', {required: false}],
   ], {
-    prefix: 'PREFIXED'
+    prefix: 'PREFIXED',
   })
 
   const assertions = ctrlEnv.assert()
@@ -42,9 +42,9 @@ tap.test('should warn missing optional var', (t) => {
 
 tap.test('should throw invalid required var', (t) => {
   const ctrlEnv = new CtrlEnv([
-    ['INVALID_REQUIRED_VAR', {values: ['sparks fly b-side']}]
+    ['INVALID_REQUIRED_VAR', {values: ['sparks fly b-side']}],
   ], {
-    prefix: 'PREFIXED'
+    prefix: 'PREFIXED',
   })
 
   t.ok(process.env.INVALID_REQUIRED_VAR)
@@ -55,9 +55,9 @@ tap.test('should throw invalid required var', (t) => {
 
 tap.test('should throw invalid optional var', (t) => {
   const ctrlEnv = new CtrlEnv([
-    ['INVALID_OPTIONAL_VAR', {values: ['sparks fly b-side']}]
+    ['INVALID_OPTIONAL_VAR', {values: ['sparks fly b-side']}],
   ], {
-    prefix: 'PREFIXED'
+    prefix: 'PREFIXED',
   })
 
   t.ok(process.env.INVALID_OPTIONAL_VAR)
@@ -68,9 +68,9 @@ tap.test('should throw invalid optional var', (t) => {
 
 tap.test('should throw invalid integer var', (t) => {
   const ctrlEnv = new CtrlEnv([
-    ['INVALID_INTEGER_VAR', {type: 'integer'}]
+    ['INVALID_INTEGER_VAR', {type: 'integer'}],
   ], {
-    prefix: 'PREFIXED'
+    prefix: 'PREFIXED',
   })
 
   t.ok(process.env.INVALID_INTEGER_VAR)
@@ -81,9 +81,9 @@ tap.test('should throw invalid integer var', (t) => {
 
 tap.test('should throw invalid float var', (t) => {
   const ctrlEnv = new CtrlEnv([
-    ['INVALID_FLOAT_VAR', {type: 'float'}]
+    ['INVALID_FLOAT_VAR', {type: 'float'}],
   ], {
-    prefix: 'PREFIXED'
+    prefix: 'PREFIXED',
   })
 
   t.ok(process.env.INVALID_FLOAT_VAR)
@@ -94,9 +94,9 @@ tap.test('should throw invalid float var', (t) => {
 
 tap.test('should throw invalid number var', (t) => {
   const ctrlEnv = new CtrlEnv([
-    ['INVALID_NUMBER_VAR', {type: 'number'}]
+    ['INVALID_NUMBER_VAR', {type: 'number'}],
   ], {
-    prefix: 'PREFIXED'
+    prefix: 'PREFIXED',
   })
 
   t.ok(process.env.INVALID_NUMBER_VAR)
@@ -107,9 +107,9 @@ tap.test('should throw invalid number var', (t) => {
 
 tap.test('should throw overwrite getter', (t) => {
   const ctrlEnv = new CtrlEnv([
-    ['REQUIRED_VAR']
+    ['REQUIRED_VAR'],
   ], {
-    prefix: 'PREFIXED'
+    prefix: 'PREFIXED',
   })
 
   const assertions = ctrlEnv.assert()
@@ -126,9 +126,9 @@ tap.test('should throw overwrite getter', (t) => {
 // Negatives
 tap.test('should pass required var', (t) => {
   const ctrlEnv = new CtrlEnv([
-    ['REQUIRED_VAR']
+    ['REQUIRED_VAR'],
   ], {
-    prefix: 'PREFIXED'
+    prefix: 'PREFIXED',
   })
 
   const assertions = ctrlEnv.assert()
@@ -142,9 +142,9 @@ tap.test('should pass required var', (t) => {
 
 tap.test('should pass optional var', (t) => {
   const ctrlEnv = new CtrlEnv([
-    ['OPTIONAL_VAR', {required: false}]
+    ['OPTIONAL_VAR', {required: false}],
   ], {
-    prefix: 'PREFIXED'
+    prefix: 'PREFIXED',
   })
 
   const assertions = ctrlEnv.assert()
@@ -158,9 +158,9 @@ tap.test('should pass optional var', (t) => {
 
 tap.test('should pass valid required var', (t) => {
   const ctrlEnv = new CtrlEnv([
-    ['VALID_REQUIRED_VAR', {values: ['sparks fly b-side']}]
+    ['VALID_REQUIRED_VAR', {values: ['sparks fly b-side']}],
   ], {
-    prefix: 'PREFIXED'
+    prefix: 'PREFIXED',
   })
 
   const assertions = ctrlEnv.assert()
@@ -174,9 +174,9 @@ tap.test('should pass valid required var', (t) => {
 
 tap.test('should pass valid optional var', (t) => {
   const ctrlEnv = new CtrlEnv([
-    ['VALID_OPTIONAL_VAR', {values: ['enchanted b-side']}]
+    ['VALID_OPTIONAL_VAR', {values: ['enchanted b-side']}],
   ], {
-    prefix: 'PREFIXED'
+    prefix: 'PREFIXED',
   })
 
   const assertions = ctrlEnv.assert()
@@ -190,9 +190,9 @@ tap.test('should pass valid optional var', (t) => {
 
 tap.test('should get required var', (t) => {
   const ctrlEnv = new CtrlEnv([
-    ['REQUIRED_VAR']
+    ['REQUIRED_VAR'],
   ], {
-    prefix: 'PREFIXED'
+    prefix: 'PREFIXED',
   })
 
   const assertions = ctrlEnv.assert()
@@ -206,9 +206,9 @@ tap.test('should get required var', (t) => {
 
 tap.test('should get valid integer var', (t) => {
   const ctrlEnv = new CtrlEnv([
-    ['VALID_INTEGER_VAR', {type: 'integer'}]
+    ['VALID_INTEGER_VAR', {type: 'integer'}],
   ], {
-    prefix: 'PREFIXED'
+    prefix: 'PREFIXED',
   })
 
   assertClean(t, ctrlEnv.assert())
@@ -219,9 +219,9 @@ tap.test('should get valid integer var', (t) => {
 
 tap.test('should get valid float var', (t) => {
   const ctrlEnv = new CtrlEnv([
-    ['VALID_FLOAT_VAR', {type: 'float'}]
+    ['VALID_FLOAT_VAR', {type: 'float'}],
   ], {
-    prefix: 'PREFIXED'
+    prefix: 'PREFIXED',
   })
 
   assertClean(t, ctrlEnv.assert())
@@ -232,9 +232,9 @@ tap.test('should get valid float var', (t) => {
 
 tap.test('should get valid number var', (t) => {
   const ctrlEnv = new CtrlEnv([
-    ['VALID_NUMBER_VAR', {type: 'number'}]
+    ['VALID_NUMBER_VAR', {type: 'number'}],
   ], {
-    prefix: 'PREFIXED'
+    prefix: 'PREFIXED',
   })
 
   assertClean(t, ctrlEnv.assert())
@@ -245,12 +245,12 @@ tap.test('should get valid number var', (t) => {
 
 tap.test('should get all vars', (t) => {
   const ctrlEnv = new CtrlEnv([
-    ['REQUIRED_VAR']
-  , ['OPTIONAL_VAR', {required: false}]
-  , ['VALID_REQUIRED_VAR', {values: ['sparks fly b-side']}]
-  , ['VALID_OPTIONAL_VAR', {values: ['enchanted b-side']}]
+    ['REQUIRED_VAR'],
+    ['OPTIONAL_VAR', {required: false}],
+    ['VALID_REQUIRED_VAR', {values: ['sparks fly b-side']}],
+    ['VALID_OPTIONAL_VAR', {values: ['enchanted b-side']}],
   ], {
-    prefix: 'PREFIXED'
+    prefix: 'PREFIXED',
   })
 
   const assertions = ctrlEnv.assert()
@@ -258,10 +258,10 @@ tap.test('should get all vars', (t) => {
   t.equals(assertions.errors.length, 0)
 
   t.deepEquals(ctrlEnv.all, {
-    OPTIONAL_VAR: '1989 b-side'
-  , REQUIRED_VAR: 'taylor swift b-side'
-  , VALID_OPTIONAL_VAR: 'enchanted b-side'
-  , VALID_REQUIRED_VAR: 'sparks fly b-side'
+    OPTIONAL_VAR: '1989 b-side',
+    REQUIRED_VAR: 'taylor swift b-side',
+    VALID_OPTIONAL_VAR: 'enchanted b-side',
+    VALID_REQUIRED_VAR: 'sparks fly b-side',
   })
 
   t.end()
@@ -269,9 +269,9 @@ tap.test('should get all vars', (t) => {
 
 tap.test('should pass prefixless required var', (t) => {
   const ctrlEnv = new CtrlEnv([
-    ['PREFIXLESS_REQUIRED_VAR', {prefixed: false}]
+    ['PREFIXLESS_REQUIRED_VAR', {prefixed: false}],
   ], {
-    prefix: 'PREFIXED'
+    prefix: 'PREFIXED',
   })
 
   const assertions = ctrlEnv.assert()
