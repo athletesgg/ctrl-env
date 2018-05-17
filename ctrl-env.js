@@ -1,24 +1,37 @@
 'use strict'
 
 class CtrlEnv {
-  constructor(variables, options = {}) {
+  constructor(
+    variables,
+    options = {},
+  ) {
     this._keys = []
 
-    const {prefix = '', separator = '_'} = options
+    const {
+      prefix = '',
+      separator = '_',
+    } = options
 
     this.variables = variables
     this.prefix = prefix
     this.separator = separator
   }
 
-  reduceVariables(result, envVar) {
+  reduceVariables(
+    result,
+    envVar,
+  ) {
     const failure = this.check(envVar)
 
     if (!failure) {
       return result
     }
 
-    const [type, message, value] = failure
+    const [
+      type,
+      message,
+      value,
+    ] = failure
     const fullMessage = `${message}: ${envVar[0]}${value ? ` ${value}` : ''}`
 
     if (type === CtrlEnv.raise.warning) {
@@ -36,8 +49,16 @@ class CtrlEnv {
     const raise = CtrlEnv.raise
     let warning = false
 
-    const [key, options = {}] = envVar
-    const {required = true, prefixed = true, values, type} = options
+    const [
+      key,
+      options = {},
+    ] = envVar
+    const {
+      required = true,
+      prefixed = true,
+      values,
+      type,
+    } = options
 
     const prefix = prefixed
       ? `${this.prefix}${this.prefix ? this.separator : ''}`
@@ -47,8 +68,14 @@ class CtrlEnv {
 
     if (!value) {
       return required
-        ? [raise.error, raise.error.MISSING]
-        : [raise.warning, raise.warning.MISSING]
+        ? [
+            raise.error,
+            raise.error.MISSING,
+          ]
+        : [
+            raise.warning,
+            raise.warning.MISSING,
+          ]
     }
 
     switch (type) {
@@ -59,7 +86,11 @@ class CtrlEnv {
         const parsed = Number.parseInt(value)
 
         if (parsed.toString() !== value) {
-          return [raise.error, raise.error.INVALID, value]
+          return [
+            raise.error,
+            raise.error.INVALID,
+            value,
+          ]
         }
 
         value = parsed
@@ -69,32 +100,50 @@ class CtrlEnv {
         value = Number.parseFloat(value)
 
         if (Number.isNaN(value)) {
-          return [raise.error, raise.error.INVALID, value]
+          return [
+            raise.error,
+            raise.error.INVALID,
+            value,
+          ]
         }
       break
-      default: warning = [raise.warning, raise.warning.UNSUPPORTED_TYPE, type]
+      default: warning = [
+        raise.warning,
+        raise.warning.UNSUPPORTED_TYPE,
+        type,
+      ]
     }
 
     if (Array.isArray(values) && !values.includes(value)) {
-      return [raise.error, raise.error.INVALID, value]
+      return [
+        raise.error,
+        raise.error.INVALID,
+        value,
+      ]
     }
 
     this._keys.push(key)
 
     Object.defineProperty(this, key, {
-      get: () => value
+      get: () => value,
     })
 
     return warning
   }
 
   assert() {
-    const assertions = this.variables.reduce(this.reduceVariables.bind(this), {
-      errors: []
-    , warnings: []
-    })
+    const assertions = this.variables.reduce(
+      this.reduceVariables.bind(this),
+      {
+        errors: [],
+        warnings: [],
+      },
+    )
 
-    const {errors, warnings} = assertions
+    const {
+      errors,
+      warnings,
+    } = assertions
 
     if (warnings.length > 0) {
       warnings.forEach((warning) => console.warn(warning))
@@ -109,21 +158,21 @@ class CtrlEnv {
 
   get all() {
     return this._keys.reduce(
-      (result, key) => (result[key] = this[key], result)
-    , {}
+      (result, key) => (result[key] = this[key], result),
+      {},
     )
   }
 }
 
 CtrlEnv.raise = {
   error: {
-    INVALID: 'Invalid value'
-  , MISSING: 'Missing required key'
-  }
-, warning: {
-    MISSING: 'Missing optional key'
-  , UNSUPPORTED_TYPE: 'Unsupported type check'
-  }
+    INVALID: 'Invalid value',
+    MISSING: 'Missing required key',
+  },
+  warning: {
+    MISSING: 'Missing optional key',
+    UNSUPPORTED_TYPE: 'Unsupported type check',
+  },
 }
 
 module.exports = CtrlEnv

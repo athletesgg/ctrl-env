@@ -16,7 +16,7 @@ function assertClean(t, assertions) {
 // Positives
 tap.test('should throw missing required var', (t) => {
   const ctrlEnv = new CtrlEnv([
-    ['MISSING_REQUIRED_VAR']
+    ['MISSING_REQUIRED_VAR'],
   ])
 
   t.throws(ctrlEnv.assert)
@@ -26,7 +26,7 @@ tap.test('should throw missing required var', (t) => {
 
 tap.test('should warn missing optional var', (t) => {
   const ctrlEnv = new CtrlEnv([
-    ['MISSING_OPTIONAL_VAR', {required: false}]
+    ['MISSING_OPTIONAL_VAR', {required: false}],
   ])
 
   const assertions = ctrlEnv.assert()
@@ -38,7 +38,7 @@ tap.test('should warn missing optional var', (t) => {
 
 tap.test('should throw invalid required var', (t) => {
   const ctrlEnv = new CtrlEnv([
-    ['INVALID_REQUIRED_VAR', {values: ['sparks fly']}]
+    ['INVALID_REQUIRED_VAR', {values: ['sparks fly']}],
   ])
 
   t.ok(process.env.INVALID_REQUIRED_VAR)
@@ -49,7 +49,7 @@ tap.test('should throw invalid required var', (t) => {
 
 tap.test('should throw invalid optional var', (t) => {
   const ctrlEnv = new CtrlEnv([
-    ['INVALID_OPTIONAL_VAR', {values: ['sparks fly']}]
+    ['INVALID_OPTIONAL_VAR', {values: ['sparks fly']}],
   ])
 
   t.ok(process.env.INVALID_OPTIONAL_VAR)
@@ -60,7 +60,7 @@ tap.test('should throw invalid optional var', (t) => {
 
 tap.test('should throw invalid integer var', (t) => {
   const ctrlEnv = new CtrlEnv([
-    ['INVALID_INTEGER_VAR', {type: 'integer'}]
+    ['INVALID_INTEGER_VAR', {type: 'integer'}],
   ])
 
   t.ok(process.env.INVALID_INTEGER_VAR)
@@ -71,7 +71,7 @@ tap.test('should throw invalid integer var', (t) => {
 
 tap.test('should throw invalid float var', (t) => {
   const ctrlEnv = new CtrlEnv([
-    ['INVALID_FLOAT_VAR', {type: 'float'}]
+    ['INVALID_FLOAT_VAR', {type: 'float'}],
   ])
 
   t.ok(process.env.INVALID_FLOAT_VAR)
@@ -82,7 +82,7 @@ tap.test('should throw invalid float var', (t) => {
 
 tap.test('should throw invalid number var', (t) => {
   const ctrlEnv = new CtrlEnv([
-    ['INVALID_NUMBER_VAR', {type: 'number'}]
+    ['INVALID_NUMBER_VAR', {type: 'number'}],
   ])
 
   t.ok(process.env.INVALID_NUMBER_VAR)
@@ -93,7 +93,7 @@ tap.test('should throw invalid number var', (t) => {
 
 tap.test('should throw overwrite getter', (t) => {
   const ctrlEnv = new CtrlEnv([
-    ['REQUIRED_VAR']
+    ['REQUIRED_VAR'],
   ])
 
   const assertions = ctrlEnv.assert()
@@ -109,7 +109,7 @@ tap.test('should throw overwrite getter', (t) => {
 // Negatives
 tap.test('should pass required var', (t) => {
   const ctrlEnv = new CtrlEnv([
-    ['REQUIRED_VAR']
+    ['REQUIRED_VAR'],
   ])
 
   const assertions = ctrlEnv.assert()
@@ -122,7 +122,7 @@ tap.test('should pass required var', (t) => {
 
 tap.test('should pass optional var', (t) => {
   const ctrlEnv = new CtrlEnv([
-    ['OPTIONAL_VAR', {required: false}]
+    ['OPTIONAL_VAR', {required: false}],
   ])
 
   const assertions = ctrlEnv.assert()
@@ -135,7 +135,7 @@ tap.test('should pass optional var', (t) => {
 
 tap.test('should pass valid required var', (t) => {
   const ctrlEnv = new CtrlEnv([
-    ['VALID_REQUIRED_VAR', {values: ['sparks fly']}]
+    ['VALID_REQUIRED_VAR', {values: ['sparks fly']}],
   ])
 
   const assertions = ctrlEnv.assert()
@@ -148,7 +148,7 @@ tap.test('should pass valid required var', (t) => {
 
 tap.test('should pass valid optional var', (t) => {
   const ctrlEnv = new CtrlEnv([
-    ['VALID_OPTIONAL_VAR', {values: ['enchanted']}]
+    ['VALID_OPTIONAL_VAR', {values: ['enchanted']}],
   ])
 
   const assertions = ctrlEnv.assert()
@@ -161,7 +161,7 @@ tap.test('should pass valid optional var', (t) => {
 
 tap.test('should get required var', (t) => {
   const ctrlEnv = new CtrlEnv([
-    ['REQUIRED_VAR']
+    ['REQUIRED_VAR'],
   ])
 
   const assertions = ctrlEnv.assert()
@@ -174,7 +174,7 @@ tap.test('should get required var', (t) => {
 
 tap.test('should get valid integer var', (t) => {
   const ctrlEnv = new CtrlEnv([
-    ['VALID_INTEGER_VAR', {type: 'integer'}]
+    ['VALID_INTEGER_VAR', {type: 'integer'}],
   ])
 
   assertClean(t, ctrlEnv.assert())
@@ -185,7 +185,7 @@ tap.test('should get valid integer var', (t) => {
 
 tap.test('should get valid float var', (t) => {
   const ctrlEnv = new CtrlEnv([
-    ['VALID_FLOAT_VAR', {type: 'float'}]
+    ['VALID_FLOAT_VAR', {type: 'float'}],
   ])
 
   assertClean(t, ctrlEnv.assert())
@@ -196,7 +196,7 @@ tap.test('should get valid float var', (t) => {
 
 tap.test('should get valid number var', (t) => {
   const ctrlEnv = new CtrlEnv([
-    ['VALID_NUMBER_VAR', {type: 'number'}]
+    ['VALID_NUMBER_VAR', {type: 'number'}],
   ])
 
   assertClean(t, ctrlEnv.assert())
@@ -207,20 +207,20 @@ tap.test('should get valid number var', (t) => {
 
 tap.test('should get all vars', (t) => {
   const ctrlEnv = new CtrlEnv([
-    ['REQUIRED_VAR']
-  , ['OPTIONAL_VAR', {required: false}]
-  , ['VALID_REQUIRED_VAR', {values: ['sparks fly']}]
-  , ['VALID_OPTIONAL_VAR', {values: ['enchanted']}]
+    ['REQUIRED_VAR'],
+    ['OPTIONAL_VAR', {required: false}],
+    ['VALID_REQUIRED_VAR', {values: ['sparks fly']}],
+    ['VALID_OPTIONAL_VAR', {values: ['enchanted']}],
   ])
 
   const assertions = ctrlEnv.assert()
   assertClean(t, assertions)
 
   t.deepEquals(ctrlEnv.all, {
-    OPTIONAL_VAR: '1989'
-  , REQUIRED_VAR: 'taylor swift'
-  , VALID_OPTIONAL_VAR: 'enchanted'
-  , VALID_REQUIRED_VAR: 'sparks fly'
+    OPTIONAL_VAR: '1989',
+    REQUIRED_VAR: 'taylor swift',
+    VALID_OPTIONAL_VAR: 'enchanted',
+    VALID_REQUIRED_VAR: 'sparks fly',
   })
 
   t.end()
